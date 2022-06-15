@@ -21,7 +21,7 @@ package it.unina.android.ripper.automation;
 
 import static it.unina.android.shared.ripper.constants.InteractionType.BACK;
 import static it.unina.android.shared.ripper.constants.InteractionType.CHANGE_ORIENTATION;
-import static it.unina.android.shared.ripper.constants.InteractionType.DOUBLE_ORIENTATION;
+//import static it.unina.android.shared.ripper.constants.InteractionType.DOUBLE_ORIENTATION;
 import static it.unina.android.shared.ripper.constants.InteractionType.CLICK;
 import static it.unina.android.shared.ripper.constants.InteractionType.CLICK_ON_TEXT;
 import static it.unina.android.shared.ripper.constants.InteractionType.CLICK_MENU_ITEM;
@@ -101,7 +101,7 @@ public class RipperAutomation implements IAutomation {
 			if (	eventType.equals(InteractionType.BACK)
 				|| 	eventType.equals(InteractionType.SCROLL_DOWN)
 				||	eventType.equals(InteractionType.CHANGE_ORIENTATION)
-				||	eventType.equals(InteractionType.DOUBLE_ORIENTATION)
+				//||	eventType.equals(InteractionType.DOUBLE_ORIENTATION)
 				||	eventType.equals(InteractionType.OPEN_MENU))
 			{
 				this.fireEventOnView(null, eventType, null);
@@ -171,12 +171,12 @@ public class RipperAutomation implements IAutomation {
 		{
 			this.robot.changeOrientation();
 		}
-		else if (interactionType.equals(DOUBLE_ORIENTATION))
+		/*else if (interactionType.equals(DOUBLE_ORIENTATION))
 		{
 			this.robot.changeOrientation();
 			this.robot.sleep(1000);
 			this.robot.changeOrientation();
-		}
+		}*/
 		else if (interactionType.equals(CLICK_ON_TEXT))
 		{
 			this.robot.clickOnText(value);

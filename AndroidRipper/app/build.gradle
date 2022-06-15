@@ -1,12 +1,22 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 26
+
+
 
     defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
         applicationId "it.unina.android.ripper"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
+
+
 
     buildTypes {
         release {
@@ -18,7 +28,9 @@ android {
 
 dependencies {
     //compile 'com.jayway.android.robotium:robotium-solo:5.6.3'
-    compile files('libs/custom_gson_2.8.1.jar')
-    compile files('libs/ripper_shared.jar')
-    compile files('libs/robotium_5.6.3_custom.jar')
+    implementation 'com.google.code.gson:gson:2.8.1'
+    //implementation files('libs/custom_gson_2.8.1.jar')
+    implementation files('libs/ripper_shared.jar')
+    //implementation files('libs/robotium_5.6.3_custom.jar')
+    implementation project(path: ':robotium')
 }
