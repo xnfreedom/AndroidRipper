@@ -852,8 +852,8 @@ public abstract class AbstractDriver {
 				System.out.println("adb chmod 777...");
 				Actions.adbShell("chmod", "777", "/data/data/" + AUT_PACKAGE + "/");
 			} else {
-				System.out.println("adb chmod 777...");
-				Actions.adbSuShell("chmod", "777", "/data/data/" + AUT_PACKAGE + "/");
+				System.out.println("no do adb chmod 777...");
+				//Actions.adbSuShell("chmod", "777", "/data/data/" + AUT_PACKAGE + "/");
 			}
 
 			notifyRipperLog("Installation finished!");

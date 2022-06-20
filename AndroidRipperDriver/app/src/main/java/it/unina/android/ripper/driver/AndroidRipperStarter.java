@@ -674,10 +674,10 @@ public class AndroidRipperStarter {
 			throw new RipperRuntimeException(AndroidRipperStarter.class, "validateEnvorinment", "adb executable not in PATH!");
 		}
 
-		if (validateCommand("emulator") == false) {
+		/*if (validateCommand("emulator") == false) {
 			//throw new RuntimeException("emulator not in PATH");
 			throw new RipperRuntimeException(AndroidRipperStarter.class, "validateEnvorinment", "emulator executable not in PATH!");
-		}
+		}*/
 	}
 
 	protected boolean validateCommand(String cmd) {
@@ -714,6 +714,8 @@ public class AndroidRipperStarter {
 
 			println("Signing AndroidRipper...");
 
+            println("jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore " + debugKeyStorePath
+					+ "/debug.keystore -storepass android -keypass android " + tempPath + "/ar.apk androiddebugkey");
 			execCommand("jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore " + debugKeyStorePath
 					+ "/debug.keystore -storepass android -keypass android " + tempPath + "/ar.apk androiddebugkey");
 			execCommand("zipalign 4 " + tempPath + "/ar.apk " + tempPath + "/ripper.apk");

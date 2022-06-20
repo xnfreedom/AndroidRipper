@@ -92,6 +92,8 @@ public abstract class AbstractDevice {
 	public abstract void start();
 	public abstract void stop();
 
-	public abstract String getIpAddress();
+	public String getIpAddress(){
+		return "127.0.0.1";
+	};
 
 }

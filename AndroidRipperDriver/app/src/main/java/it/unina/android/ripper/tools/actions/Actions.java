@@ -100,7 +100,19 @@ public class Actions {
 	 * Start AndroidRipperService on device
 	 */
 	public static void startAndroidRipperService() {
+
 		try {
+			AndroidTools.adb("-s", DEVICE, "shell",
+					"am start it.unina.android.ripper_service/.MainActivity")
+					.connectStdout(System.out).connectStderr(System.out);
+			try{
+				Thread.sleep(3000);
+			}
+			catch(InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+
 			AndroidTools.adb("-s", DEVICE, "shell",
 					"am startservice -a it.unina.android.ripper_service.ANDROID_RIPPER_SERVICE")
 					.connectStdout(System.out).connectStderr(System.out);
@@ -822,6 +834,13 @@ public class Actions {
 	}
 
 	public static String getRealDeviceIP() {
+
+		String ip = "10.240.164.138";
+		return ip;
+
+	}
+
+	public static String getRealDeviceIPOld() {
 		String ip = null;
 
 		try {
@@ -1006,7 +1025,8 @@ public class Actions {
 	public static void pushToSD(String string) {
 		try {
 			WrapProcess p;
-			p = AndroidTools.adb("-s", DEVICE, "push", string, "/sdcard/").connectStderr(System.out).connectStdout(System.out);
+			//for Android version, update /sdcard/ to /sdcard/Download
+	        p = AndroidTools.adb("-s", DEVICE, "push", string, "/data/local/tmp/").connectStderr(System.out).connectStdout(System.out);
 			p.waitFor();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -1035,10 +1055,11 @@ public class Actions {
 		try {
 			int sdk = getAndroidSDKVersion();
 			WrapProcess p;
+			//for Android version, update /sdcard/ to /sdcard/Download
 			if (sdk < 23) {
-				p =AndroidTools.adb("-s", DEVICE, "shell", "pm", "install", "-f", "/sdcard/"+string).connectStderr(System.out).connectStdout(System.out);
+				p =AndroidTools.adb("-s", DEVICE, "shell", "pm", "install", "-f", "/data/local/tmp/"+string).connectStderr(System.out).connectStdout(System.out);
 			} else {
-				p =AndroidTools.adb("-s", DEVICE, "shell", "pm", "install", "-f", "-g", "/sdcard/"+string).connectStderr(System.out).connectStdout(System.out);
+				p =AndroidTools.adb("-s", DEVICE, "shell", "pm", "install", "-f", "-g", "/data/local/tmp/"+string).connectStderr(System.out).connectStdout(System.out);
 			}
 			p.waitFor();
 			System.out.println(string +" installed!");

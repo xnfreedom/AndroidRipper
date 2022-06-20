@@ -32,12 +32,14 @@ public class Configuration implements IConfiguration
 	/**
 	 * AUT Package
 	 */
-	public static String PACKAGE_NAME = "%%_PACKAGE_NAME_%%";
+	//adb shell pm list instrumentationpublic static String PACKAGE_NAME = "%%_PACKAGE_NAME_%%";
+	public static String PACKAGE_NAME = "kdk.android.simplydo";
 	
 	/**
 	 * AUT Class Name
 	 */
-	public static String CLASS_NAME = "%%_CLASS_NAME_%%";
+	//public static String CLASS_NAME = "%%_CLASS_NAME_%%";
+	public static String CLASS_NAME = "kdk.android.simplydo.MainActivity";
 	
 	/**
 	 * Ripper Package

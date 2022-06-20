@@ -117,6 +117,8 @@ public class RipperServiceSocket {
 	public void connect() throws RipperException
 	{
 		try {
+			System.out.println("host:" + host);
+			System.out.println("port:" + port);
 			this.socket = new Socket(host, port);
 			connected = true;
 		} catch (IOException e) {
